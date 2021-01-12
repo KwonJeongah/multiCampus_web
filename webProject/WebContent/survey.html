@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>설문 조사 시스템</title>
+<style type="text/css">
+</style>
+</head>
+<body>
+
+<form action="hiServlet"  method="post">
+	<h1>
+	설문 조사
+	</h1>
+	<p>
+	아래 항목을 채워주세요.
+	</p>
+	<b>
+	신상 정보: <br><br>
+	</b>
+	<table>
+		<tr>
+			<td align="left">이름</td>
+			<td align="left"><input type="text" name="name"></td>
+		</tr>
+		<tr>
+			<td align="left">전화번호</td>
+			<td align="left"><input type="text" name="number"></td>
+		</tr>
+		<tr>
+			<td align="left">이메일 주소</td>
+			<td align="left"><input type="text" name="email"></td>
+		</tr>
+	</table>
+	<b>
+	어떤 경로로 알게 되었습니까?
+	</b>
+	<p>
+	<input type="radio" name="contactVia" value="article">기사
+	<input type="radio" name="contactVia" value="ad">광고
+	<input type="radio" name="contactVia" value="etc">기타
+	</p>
+	<b>
+	좋아하는 스포츠는 무엇입니까?
+	</b>
+	<p>
+	<input type="checkbox" name="sports" value="tennis">테니스
+	<input type="checkbox" name="sports" value="golf">골프
+	<input type="checkbox" name="sports" value="basketball">농구<br>
+	<input type="checkbox" name="sports" value="squash">스쿼시
+	<input type="checkbox" name="sports" value="balling">볼링
+	<input type="checkbox" name="sports" value="soccer">축구
+	</p>
+	<p>
+	연락방법 
+		<select name="connect">
+			<option value="email"> email
+			<option value="phone"> phone
+			<option value="sms"> sms			
+		</select>
+	</p>
+	<p>
+	<input type="checkbox" name="agree" value="agree"> 개인정보 활용에 동의합니다.
+	</p>
+	<input type = "submit" value="submit">
+</form>
+
+</body>
+</html>
