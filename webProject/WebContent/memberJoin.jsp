@@ -9,20 +9,9 @@
 <title>회원가입</title>
 </head>
 <body>
-<h1>회원가입이 완료되었습니다</h1>
-입력한 정보 내역입니다:
 <%
-	request.setCharacterEncoding("utf-8");
-
-	//데이터베이스에 저장
-	MemberDAO dao = new MemberDAO();
-	MemberDTO member = new MemberDTO();
-	member.setId(request.getParameter("id") );
-	member.setName(request.getParameter("name"));
-	member.setPassword(request.getParameter("pw"));
-	member.setEmail(request.getParameter("email"));
-	
-	if(dao.addMember(member)){
+	boolean resultFlag = (Boolean)request.getAttribute("resultFlag");
+	if(resultFlag){
 %>
 <h2>DB 저장 성공</h2>
 <table>

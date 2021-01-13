@@ -3,6 +3,7 @@ package kr.co.java.common;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class DBUtil {
@@ -17,6 +18,24 @@ public class DBUtil {
 	}
 	
 	public static void close(Connection conn, PreparedStatement ps) {
+		if(ps != null) {
+			try {
+				ps.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		close(conn);
+	}
+	
+	public static void close(Connection conn, PreparedStatement ps, ResultSet rs) {
+		if(rs!= null) {
+			try {
+				rs.close();
+			}catch(SQLException e) {
+				e.printStackTrace();
+			}
+		}
 		if(ps != null) {
 			try {
 				ps.close();
