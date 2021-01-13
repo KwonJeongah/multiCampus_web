@@ -1,3 +1,4 @@
+  
 <%@page import="kr.co.java.dto.MemberDTO"%>
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -10,7 +11,7 @@
 </head>
 <body>
 <%
-	List<MemberDTO> memberList = (List<MemberDTO>)request.getAttribute("result");
+	List<MemberDTO> memberList = (List<MemberDTO>)request.getAttribute("memberList");
 %>
 <H1>회원목록보기!! </H1>
 <table>
@@ -20,6 +21,7 @@
 		<th>비밀번호</th>
 		<th>이메일</th>
 		<th>가입일</th>
+		<th>삭제</th>
 	</tr>
 	<% if(memberList != null){
 	for(MemberDTO member:memberList){ %>
@@ -30,8 +32,7 @@
 		<td><%=member.getEmail() %></td>
 		<td><%=member.getJoinDate() %></td>
 		<td><a href='memberDel?id=<%=member.getId() %>'>삭제</a></td>
-	</tr>
-	
+	</tr>	
 	<%} //end for
 	}//end if %>
 </table>

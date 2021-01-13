@@ -62,36 +62,36 @@ public class MemberDAO {
 	}
 	
 	public List<MemberDTO> getMemberList() {
-		List<MemberDTO> result = null;
-		
+		List<MemberDTO> memberList = new ArrayList<MemberDTO>();
+		//1. 필요한 객체 선언 
 		Connection conn = null;
 		PreparedStatement ps = null;
 		ResultSet rs = null;
 		try {
-			result = new ArrayList<MemberDTO>();
-			
+			//3. DB접속
 			conn = DBUtil.getConnection();
-			
-			String sql = "select id, name, password, join_date, email from members";
-			ps = conn.prepareStatement(sql);
+			//4. 쿼리작성
+			ps = conn.prepareStatement("select id,name,password,email,join_date from members");
+			//5. 쿼리실행
 			rs = ps.executeQuery();
-			
+			//6. 결과값을 꺼내기!! 
 			while(rs.next()) {
 				MemberDTO member = new MemberDTO();
-				member.setId(rs.getString(1));
+				member.setId(rs.getString("id"));
 				member.setName(rs.getString(2));
 				member.setPassword(rs.getString(3));
-				member.setJoinDate(rs.getString(4));
-				member.setEmail(rs.getString(5));
-				result.add(member);
+				member.setEmail(rs.getString(4));
+				member.setJoinDate(rs.getString(5));
+				
+				memberList.add(member);
 			}
-		}catch(Exception e) {
+		}catch (Exception e) {
 			e.printStackTrace();
 		}finally {
+			//2. 선언한 객체 닫기!!
 			DBUtil.close(conn, ps, rs);
 		}
-		
-		return result;
+		return memberList;
 	}
 
 	
