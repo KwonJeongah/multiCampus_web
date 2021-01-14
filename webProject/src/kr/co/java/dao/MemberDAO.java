@@ -10,6 +10,33 @@ import kr.co.java.common.DBUtil;
 import kr.co.java.dto.MemberDTO;
 
 public class MemberDAO {
+	//로그인
+	public boolean loginMember(String id, String pw) {
+		boolean resultFlag = false;
+		
+		Connection conn = null;
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		
+		try {
+			conn = DBUtil.getConnection();
+			
+			ps = conn.prepareStatement("select * from members where id = ? and password = ?");
+			ps.setNString(1,  id);
+			ps.setNString(2, pw);
+			
+			rs = ps.executeQuery();
+			
+			if(rs!=null) resultFlag = true;
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			DBUtil.close(conn, ps);
+		}
+		
+		return resultFlag;
+	}
 	//멤버 하나만
 	public MemberDTO getMember(String id) {
 		MemberDTO member = null;
@@ -178,9 +205,9 @@ public class MemberDAO {
 		}
 		*/
 		
-		MemberDTO member = dao.getMember("idk");
+		MemberDTO member = dao.getMember("changsuk");
 		System.out.println(member);
 		
-		System.out.println(dao.deleteMember("pinokee24"));
+		
 	}
 }

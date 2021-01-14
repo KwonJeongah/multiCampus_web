@@ -14,6 +14,7 @@
 	List<MemberDTO> memberList = (List<MemberDTO>)request.getAttribute("memberList");
 %>
 <H1>회원목록보기!! </H1>
+<h3><%=request.getAttribute("id") %> 님 환영합니다 <a href="Logoutservlet">로그아웃</a></h3>
 <table>
 	<tr>
 		<th>아이디</th>
