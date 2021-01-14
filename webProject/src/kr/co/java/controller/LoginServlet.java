@@ -47,8 +47,11 @@ public class LoginServlet extends HttpServlet {
 		}else{
 			//3-2 아이디는 있으나 비밀번호가 다를 경우
 			//로그인 폼으로 리다이렉트
-			String msg = URLEncoder.encode("비밀번호를 확인하세요,", "utf-8");
-			System.out.println(msg);
+			String msg = URLEncoder.encode("비밀번호를 확인하세요.", "utf-8");
+			Cookie cookie = new Cookie("msg", msg);
+			cookie.setPath("/");
+			cookie.setMaxAge(3);
+			response.addCookie(cookie);
 			response.sendRedirect("loginForm.jsp");
 		}
 	}
