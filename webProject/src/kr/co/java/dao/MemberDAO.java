@@ -10,6 +10,70 @@ import kr.co.java.common.DBUtil;
 import kr.co.java.dto.MemberDTO;
 
 public class MemberDAO {
+	//멤버 하나만
+	public MemberDTO getMember(String id) {
+		MemberDTO member = null;
+		
+		Connection conn = null;
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		
+		try {
+			conn = DBUtil.getConnection();
+			
+			ps = conn.prepareStatement("select * from members where id = ?" );
+			ps.setString(1, id);
+					
+			rs = ps.executeQuery();
+			
+			while(rs.next()) {
+				member = new MemberDTO();
+				member.setId(rs.getString("id"));
+				member.setPassword(rs.getString("password"));
+				member.setEmail(rs.getString("email"));
+				member.setJoinDate(rs.getString("join_date"));
+				member.setName(rs.getString("name"));
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			DBUtil.close(conn, ps, rs);
+		}
+		
+		return member;
+	}
+	//멤버 수정
+	public int updateMember(MemberDTO member) {
+		int resultCount = 0;
+		
+		Connection conn = null;
+		PreparedStatement ps = null;
+		
+		try {
+			conn = DBUtil.getConnection();
+			
+			String id = member.getId();
+			String name = member.getName();
+			String pw = member.getPassword();
+			String email = member.getEmail();
+			String date = member.getJoinDate();
+			
+			ps = conn.prepareStatement("update members set name = ?, password = ?, email = ? where id = ?" );
+			ps.setNString(1, name);
+			ps.setNString(2, pw);
+			ps.setNString(3, email);
+			ps.setNString(4, id);
+			
+			resultCount = ps.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			DBUtil.close(conn, ps);
+		}
+		
+		return resultCount;
+	}
 	//멤버 삭제
 	public int deleteMember(String id) {
 		int resultCount = 0;
@@ -113,6 +177,9 @@ public class MemberDAO {
 			System.out.println(memberDTO);
 		}
 		*/
+		
+		MemberDTO member = dao.getMember("idk");
+		System.out.println(member);
 		
 		System.out.println(dao.deleteMember("pinokee24"));
 	}
