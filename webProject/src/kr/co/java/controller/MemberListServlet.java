@@ -10,6 +10,7 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import kr.co.java.dao.MemberDAO;
 import kr.co.java.dto.MemberDTO;
@@ -25,6 +26,16 @@ public class MemberListServlet extends HttpServlet {
 		//로그인 여부 확인하기
 		boolean loginFlag = false;
 		String id = null;
+		
+		HttpSession session= request.getSession();
+		session.getAttribute("loginOK");
+		MemberDTO member = (MemberDTO)session.getAttribute("loginOK");
+		if(member != null) {
+			loginFlag = true;
+			id = member.getId();
+		}
+		
+		/* 쿠키 이용했을 때 상태정보를 확인
 		Cookie[] cookies = request.getCookies();
 		if(cookies != null) {
 			for(Cookie cookie : cookies) {
@@ -35,6 +46,7 @@ public class MemberListServlet extends HttpServlet {
 				}
 			}
 		}
+		*/
 		
 		if(loginFlag) {
 		//1. DAO에게 memberList를 얻어온다. 
