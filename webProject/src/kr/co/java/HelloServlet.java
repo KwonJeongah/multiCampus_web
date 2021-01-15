@@ -9,11 +9,26 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/hiServlet")
+@WebServlet("/hi")
 public class HelloServlet extends HttpServlet {
+	
+	public HelloServlet() {
+		System.out.println("Hellow Servlet 생성자 실행");
+	}
+	@Override
+	public void destroy() {
+		System.out.println("Hellow Servlet destroy 실행");
+	}
+
+	@Override
+	public void init() throws ServletException {
+		System.out.println("Hellow Servlet init 실행");
+	}
+
 	private static final long serialVersionUID = 1L;
  
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		System.out.println("Hello Servlet service 실행");
 		System.out.println(request.getParameter("name"));
 		System.out.println("짹짹!!");
 		response.setContentType("text/html; charset=utf-8");
