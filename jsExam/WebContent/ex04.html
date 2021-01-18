@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+</head>
+<body>
+<!--  버튼을 하나 만들고, 버튼을 클릭하면 구구단이 출력되도록 코드를 작성해보세요.
+	document.write() 함수를 이용해서 출력하세요.
+ -->
+ <script type="text/javascript">
+	function gugudan(){
+		document.write("<pre>");
+		for(var i = 1; i<10; i++){
+			
+			for(var j = 1; j<10; j++){
+				document.write(j+"X"+i+"="+(i*j)+"\t");
+			}
+			document.write("<br>");
+		}
+		document.write("</pre>")
+	}
+</script>
+ 
+ <form>
+ 	<input type = "button" value='클릭하세요' onclick='gugudan()'>
+ </form>
+
+</body>
+</html>
+

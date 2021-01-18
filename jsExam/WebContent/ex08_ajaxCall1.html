@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<button>ajax call~~!</button>
+	<p></p>
+	
+	<script type = "text/javascript">
+		var btn = document.querySelector("button");
+		btn.addEventListener('click', ajaxTest);
+		
+		function ajaxTest(){
+			const xhr = new XMLHttpRequest();
+			xhr.open("get", "ajaxTest01.jsp")
+			
+			xhr.onreadystatechange = function () {
+				if(xhr.readyState === 4){
+					if(xhr.status === 200){
+						document.querySelector("p").innerHTML = this.responseText;
+					}else{
+						document.querySelector("p").innerHTML = "fail";
+					}
+				}
+			}
+			
+			xhr.send();
+		}
+	</script>
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<form name = "myForm" action = "hello.html" method = "post" onsubmit="return validateForm()">
+		    <table>
+                <tr>
+                    <td>이름:</td>
+                    <td><input type="text" name="name" ></td>
+                </tr>
+                <tr>
+                    <td>아이디:</td>
+                    <td><input type="text" name="id"></td>
+                </tr>
+                <tr>
+                    <td>비밀번호:</td>
+                    <td><input type="password" name="password"></td>
+                </tr>
+                <tr>
+                    <td>이메일:</td>
+                    <td><input type="email" name="email"></td>
+                </tr>
+            </table>
+            <input type = "submit" value="전송">
+	</form>
+
+</body>
+
+<script type="text/javascript">
+
+	function validateForm(){
+		var name = document.forms["myForm"]["name"].value;
+		var id = document.forms["myForm"]["id"].value;
+		var pw = document.forms["myForm"]["pw"].value;
+		var email = document.forms["myForm"]["email"].value;
+		if(name== null ||name =="" || id==null||id==""||pw==null||pw=="" ||email ==null ||email==""){
+			alert("이름,비밀번호,id,email 모두 공백이 있으면 안돼요.")
+			return false;
+		}
+		return true;
+	}
+</script>
+</html>

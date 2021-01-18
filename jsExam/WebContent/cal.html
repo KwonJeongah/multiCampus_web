@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<h1>연산 시스템</h1>
+	아래 항목을 채워주세요.
+	
+	<form name = "myForm" method = "post">
+		    <table>
+                <tr>
+                    <td>피연산자 1</td>
+                    <td><input type = "number" name="op1" style = "text-align:right;"></td>
+                    
+                </tr>
+                <tr>
+                    <td>피연산자 2</td>
+                    <td><input type="number" name="op2" style = "text-align:right;"></td>
+                </tr>
+                <tr>
+                	<td><b>결과값</b></td>
+                	<td><input type="number" id = "result" value = null style = "text-align:right;"></td>
+                </tr>
+            </table>
+            <input type = 'button' onclick='plus()' value='+'/>
+            <input type = 'button' onclick='minus()' value='-'/>
+            <input type = 'button' onclick='multiply()' value='*'/>
+            <input type = 'button' onclick='division()' value='/'/>
+	</form>
+</body>
+
+<script type="text/javascript">
+	function plus(){
+		var op1 = +document.forms["myForm"]["op1"].value;
+		var op2 = +document.forms["myForm"]["op2"].value;
+		
+		document.getElementById("result").value = op1 + op2;
+	}
+	
+	function minus(){
+		var op1 = document.forms["myForm"]["op1"].value;
+		var op2 = document.forms["myForm"]["op2"].value;
+		
+		document.getElementById("result").value = op1-op2;
+	}
+	
+	function multiply(){
+		var op1 = document.forms["myForm"]["op1"].value;
+		var op2 = document.forms["myForm"]["op2"].value;
+		
+		document.getElementById("result").value = op1*op2;
+	}
+	
+	function division(){
+		var op1 = document.forms["myForm"]["op1"].value;
+		var op2 = document.forms["myForm"]["op2"].value;
+		
+		document.getElementById("result").value = op1/op2;
+	}
+</script>
+</html>

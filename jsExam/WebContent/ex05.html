@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+</head>
+<body>
+<form action="#" onsubmit="checkName()">
+	<input type = "text" name = "name" id="name">
+	<input type = "submit" value="전송">
+</form>
+
+<script type="text/javascript">
+	function checkName(){
+		var name = document.getElementById("name");
+		alert(name.value);
+	}
+</script>
+</body>
+</html>

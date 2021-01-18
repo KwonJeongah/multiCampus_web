@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css" >
+div{
+	background-color: #228B22;
+	width: 120px;
+	height: 20px;
+	padding: 40px;
+}
+</style>
+<!-- <script type="text/javascript">
+	alert('1');
+</script> -->
+</head>
+<body>
+<!-- <script type="text/javascript">
+	alert('2');
+</script> -->
+<div onmousedown="mouseDown(this)" onmouseup="mouseUp(this)">클릭하세요^^</div>
+
+<script type="text/javascript">
+	//alert('3');
+	
+	function clickFunc(div){
+		div.style.backgroundColor="#FF00FF";
+		div.innerHTML = "hahaha";
+	}
+	function mouseDown(div){
+		div.style.backgroundColor="#1E90FF";
+		div.innerHTML = "버튼을 떼주세요";
+	}
+	function mouseUp(div){
+		div.style.backgroundColor="#228B22";
+		div.innerHTML = "클릭하세요!!";
+	}
+	
+	//마우스를 올렸을때 onmouseup 내렸을때.. onmousedown  각각 이벤트가 일어났을때...   
+	//div 색이 바뀌고,  버튼을 떼주세요..    클릭하세요.    이렇게 바뀔 수 있도록  함수를 정의하고 이벤트를 등록해주세요.
+</script>
+</body>
+</html>

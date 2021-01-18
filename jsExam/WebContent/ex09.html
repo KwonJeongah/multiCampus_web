@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+</head>
+<body>
+<table>
+	<tr>
+		<th>이름</th>
+		<th>나이</th>
+		<th>성별</th>
+	</tr>
+	<tbody id = "person_list">
+	
+	</tbody>
+	
+</table>
+
+<script type="text/javascript">
+	const persons = [
+		{
+			name:'kang',
+			age:20,
+			gender:'female'
+		},
+		{
+			name:'kwon',
+			age:24,
+			gender:'female'
+		},
+		{
+			name:'lee',
+			age:60,
+			gender:'female'
+		},
+		
+	]
+	
+	function show(){
+		let tags = "";
+		for(let i = 0; i<persons.length; i++){
+			let person = persons[i];
+			let personKeys = Object.keys(persons[i]);
+			tags += "<tr>";
+			for(let j = 0; j<personKeys.length; j++){
+				tags += "<td>"+person[personKeys[j]] + "</td>"
+			}
+			tags += "</tr>";
+		}
+		document.getElementById("person_list").innerHTML = tags;
+	}
+	
+	show();
+</script>
+</body>
+</html>
