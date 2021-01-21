@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="exam.spring.board.dao.MembersMapper">
+	<!-- <resultMap type="exam.spring.board.dto.Member" id="member_resultMap">
+		<result column="id" property="id" javaType="java.lang.String"/>
+		<result column="name" property="name" javaType="java.lang.String"/>
+		<result column="password" property="password" javaType="java.lang.String"/>
+		<result column="email" property="email" javaType="java.lang.String"/>
+		<result column="join_date" property="joinDate" javaType="java.lang.String"/>
+	</resultMap> -->
+	<select id="getMember"	resultType="exam.spring.board.dto.Member">
+		select id,name,password,email,join_date from members where id = #{id}
+	</select>
+	
+	<insert id = "addMember" parameterType = "exam.spring.board.dto.Member">
+		insert into members (id, name, password, email, join_date) values (#{id},#{name}, #{password}, #{email}, sysdate)
+	</insert>
+	
+	<select id="getMembers" resultType="exam.spring.board.dto.Member">
+		select id,name,password,email,join_date from members order by join_date desc
+	</select>
+</mapper>

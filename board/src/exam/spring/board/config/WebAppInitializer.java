@@ -3,6 +3,7 @@ package exam.spring.board.config;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
 /**
+ * web.xml
  * DispatcherServlet 등록 (Spring 3.2이상부터 등록, web.xml파일을 이용해 설정했던 것과 동일)
  * @author USER
  *
@@ -11,11 +12,12 @@ public class WebAppInitializer extends AbstractAnnotationConfigDispatcherServlet
 
 	/**
 	 * 여기서 리턴된 @Configuration클래스들은 ContextLoaderListener가 생성한 애플리케이션 컨텍스트 설정하는데 도움
+	 * 
 	 */
 	@Override
 	protected Class<?>[] getRootConfigClasses() {
 		// TODO Auto-generated method stub
-		return null;
+		return new Class<?>[] {ApplicationConfig.class}; //처음에 들어왔을 때 이 설정을 읽어서, componentscan함.
 	}
 
 	/**
